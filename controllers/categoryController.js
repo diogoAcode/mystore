@@ -11,8 +11,21 @@ const getCategories = () => {
     });
 };
 
+
+const createCategory = (newCategory) => {
+  return getCategories()
+  .then((categoriesData) => {
+    categoriesData.push({ name: newCategory.name });
+    return filesystem.writeFile(categoriesFilePath, JSON.stringify(categoriesData))
+  })
+  .catch((error) => {
+    throw new Error('A categoria não foi criada')
+  })
+}
+
 module.exports = {
-  getCategories
+  getCategories,
+  createCategory
 };
 
 
