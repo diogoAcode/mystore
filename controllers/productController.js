@@ -36,8 +36,87 @@ const searchProductByName = (productName) => {
     });
 };
 
+const updateProduct = (productId, updatedData) => {
+  return getProducts()
+    .then((productsData) => {
+      const productIndex = productsData.findIndex(
+        (product) => product.id === parseInt(productId)
+      );
+
+      if (productIndex != -1) {
+        const existingProduct = productsData[productIndex];
+
+        if (updatedData.title != undefined) {
+          existingProduct.title = updatedData.title;
+        }
+        if (updatedData.price != undefined) {
+          existingProduct.price = updatedData.price;
+        }
+
+        productsData[productIndex] = existingProduct;
+
+        return filesystem
+          .writeFile(
+            productFilePath,
+            JSON.stringify(productsData, null, 2),
+            "utf-8"
+          )
+          .then(() => {
+            return existingProduct;
+          })
+          .error((error) => {
+            throw new Error("Não foi possível atualizar o produto!");
+          });
+      } else {
+        throw new Error("Não foi encontrado produto com esse id!");
+      }
+    })
+    .catch((error) => {
+      throw new Error("Não possível ler os produtos!");
+    });
+};
+
+const deleteProducts = (productId) => {
+  return getProducts()
+    .then((productsData) => {
+      const productIndex = productsData.findIndex(
+        (product) => product.id === parseInt(productId)
+      );
+
+      if (productIndex != -1) {
+        const updatedProductsData = productsData.filter(
+          (product) => product.id !== parseInt(productId)
+        );
+
+        const deletedProduct = productsData[productIndex];
+
+        return filesystem
+          .writeFile(
+            productFilePath,
+            JSON.stringify(updatedProductsData, null, 2),
+            "utf-8"
+          )
+          .then(() => {
+            return deletedProduct;
+          })
+          .catch((error) => {
+            throw new Error("Não foi possível excluir o produto!");
+          });
+      } else {
+        throw new Error("Produto não encontrado!");
+      }
+    })
+    .catch((error) => {
+      throw new Error(
+        "Não possível ler os produtos para posteriormente apagar um deles!"
+      );
+    });
+};
+
 module.exports = {
   getProducts,
   getProductById,
   searchProductByName,
+  updateProduct,
+  deleteProducts,
 };
