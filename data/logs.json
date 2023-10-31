@@ -145,5 +145,33 @@
     "url": "/hrehefg",
     "params": {},
     "ip": "::1"
+  },
+  {
+    "timestamp": "2023-10-31T03:31:54.211Z",
+    "method": "PUT",
+    "url": "/products/1",
+    "params": {},
+    "ip": "::1"
+  },
+  {
+    "timestamp": "2023-10-31T04:11:33.263Z",
+    "method": "GET",
+    "url": "/products/1",
+    "params": {},
+    "ip": "::1"
+  },
+  {
+    "timestamp": "2023-10-31T04:20:40.647Z",
+    "method": "PUT",
+    "url": "/products/1",
+    "params": {},
+    "ip": "::1"
+  },
+  {
+    "timestamp": "2023-10-31T04:21:10.095Z",
+    "method": "GET",
+    "url": "/products/1",
+    "params": {},
+    "ip": "::1"
   }
 ]
