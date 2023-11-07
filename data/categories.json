@@ -1,1 +1,6 @@
-[{"name":"Eletrônicos"},{"name":"Vestuário"},{"name":"Pet"},{"name":"Pet"}]
+[
+  { "name": "Eletrônicos" },
+  { "name": "Vestuário" },
+  { "name": "Pet" },
+  { "name": "Brinquedos" }
+]

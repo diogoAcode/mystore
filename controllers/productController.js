@@ -181,7 +181,7 @@ const applyDiscount = (productId) => {
       }
     })
     .catch((error) => {
-      throw new Error("Não foi possível ler o arquivo de produtos");
+      throw new Error("Não possível ler o arquivo de produtos");
     });
 };
 

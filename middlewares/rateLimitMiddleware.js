@@ -1,24 +1,23 @@
-const requestCountByIp = {};
+const requestCountByIP = {};
 
 const rateLimit = (req, res, next) => {
   const clientIP = req.ip;
 
-  if(requestCountByIp[clientIP]) {
-    if(requestCountByIp[clientIP] > 5) {
+  if (requestCountByIP[clientIP]) {
+    if (requestCountByIP[clientIP] > 5) {
       return res.status(429).json({
-        error: 'Você atingiu o limite de requisições à cada 30 segundos!'
-      })        
+        error: "Você atingiu o limite de requisições a cada 30 segundos!",
+      });
     }
-    requestCountByIp[clientIP]++;    
+    requestCountByIP[clientIP]++;
   } else {
-    requestCountByIp[clientIP] = 1;
+    requestCountByIP[clientIP] = 1;
 
     setTimeout(() => {
-      delete requestCountByIp[clientIP];
-    }, 30000)
+      delete requestCountByIP[clientIP];
+    }, 30000);
   }
-
   next();
-}
+};
 
 module.exports = rateLimit;

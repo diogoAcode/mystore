@@ -6,7 +6,6 @@ const redirectMiddleware = require("./middlewares/redirectMiddleware");
 const logMiddleware = require("./middlewares/logMiddleware");
 const rateLimit = require("./middlewares/rateLimitMiddleware");
 
-
 const app = express();
 const port = 3000;
 
@@ -14,8 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use(redirectMiddleware);
 app.use(logMiddleware);
-app.use(rateLimit);
-
+//app.use(rateLimit);
 
 app.get("/", (req, res) => {
   res.send("Bem vindo a API de E-commerce do Infnet!");
