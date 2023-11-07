@@ -173,5 +173,12 @@
     "url": "/products/1",
     "params": {},
     "ip": "::1"
+  },
+  {
+    "timestamp": "2023-11-01T05:30:38.769Z",
+    "method": "PATCH",
+    "url": "/products/19/discount",
+    "params": {},
+    "ip": "::1"
   }
 ]

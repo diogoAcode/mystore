@@ -107,4 +107,10 @@ router.patch("/:id/rating", (req, res) => {
     });
 });
 
+router.patch('/:id/discount', (req, res) => {
+  const productId = req.params.id;
+  console.log(productId);
+
+})
+
 module.exports = router;
